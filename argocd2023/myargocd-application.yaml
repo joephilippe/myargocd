@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application #  give your application name that u wanna deploy into the k8 cluster
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/joephilippe/myargocd.git # the url of github repo u want argocd to track
+    targetRevision: HEAD
+    path: myargocd/myargocd-application.yaml # just the directory where ur code are # give urs here from ur github repo
+  destination:
+    server: https://kubernetes.default.svc  
+    namespace: westbrook # give ur own name # this is new ns that u want argocd to create
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true  
