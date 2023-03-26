@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/joephilippe/myargocd.git # the url of github repo u want argocd to track
     targetRevision: HEAD
-    path: guestbook # just the directory where ur code are # give urs here from ur github repo
+    path: myargocd # just the directory where ur code are # give urs here from ur github repo
   destination:
     server: https://kubernetes.default.svc  
     namespace: guestbook # give ur own name # this is new ns that u want argocd to create
